@@ -10,7 +10,7 @@ export function IsPlayingContextProvider ({children}) {
   const [volume, setVolume] = useState(0.5)
   const [isScreenView, setIsScreenView] = useState(false)
   const [paused, setPaused] = useState(true)
-  const audio = document.getElementById('freeDOM')
+  const audio = typeof document !== 'undefined' ? document.getElementById('freeDOM') : null;
   const playPauseTheSong = () => {
     if(paused){
 
