@@ -10,7 +10,7 @@ import { TbBrandNextjs, TbBrandTypescript } from "react-icons/tb";
 import { RiSupabaseFill } from "react-icons/ri";
 import { BsChevronCompactRight, BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 export default function Technologies() {
-  const [IsAPhoneScreen, setIsAPhoneScreen] = useState(window.innerWidth <= 720)
+  const [IsAPhoneScreen, setIsAPhoneScreen] = useState(typeof window !== 'undefined' && window.innerWidth <= 720)
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.

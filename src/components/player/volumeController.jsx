@@ -4,7 +4,7 @@ import { BsVolumeUpFill, BsFillVolumeDownFill, BsFillVolumeMuteFill } from "reac
 import { useMyContext } from '@/context/songContext';
 export default function VolumeController({size}) {
   const {volume, setVolume} = useMyContext()
-  const song = document.getElementById('freeDOM')
+  const song = typeof document !== 'undefined' ? document.getElementById('freeDOM') : null;
   const changeVolume = (e) => {
     song.volume = e.target.value
     setVolume(e.target.value)

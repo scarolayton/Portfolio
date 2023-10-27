@@ -9,13 +9,13 @@ import {  BsMusicNoteBeamed, BsArrowsAngleExpand } from 'react-icons/bs'
 export default function SongPlayer() {
   const {isPlaying} = useMyContext()
   const [fullScreenPlayerIsOpen, setFullScreenPlayerIsOpen] = useState(false)
+
   return (
     <>
-      {createPortal(
-        <FullScreenPlayer setFullScreenPlayerIsOpen={setFullScreenPlayerIsOpen} fullScreenPlayerIsOpen={fullScreenPlayerIsOpen}/>,
+      {typeof document !== 'undefined' && createPortal(
+        <FullScreenPlayer setFullScreenPlayerIsOpen={setFullScreenPlayerIsOpen} fullScreenPlayerIsOpen={fullScreenPlayerIsOpen} />,
         document.body
       )}
-     
       {isPlaying ? (
       
       <div className="flex self-center rounded-sm bg-[#4d4d4d] m-1 w-2/5 sm:w-5/6 xs:w-1/2  xs:bg-transparent">
