@@ -2,7 +2,7 @@
 import React from 'react'
 import { useMyContext } from '@/context/songContext'
 import { useEffect, useState, useRef } from 'react'
-export default function AudioBar() {
+export default function AudioBar({size}) {
   const {audioRef, isPlaying} = useMyContext()
   const [percentageProgress, setPercentageProgress] = useState(0)
   const [progressInMinutes, setProgressInMinutes] = useState('00:00')
@@ -39,12 +39,12 @@ export default function AudioBar() {
     audio.currentTime = percentageWidth  * audio.duration  
   }
   return (
-    <div className='lg:w-11/12'>
+    <div className={`${size === 'small' ? 'w-full xs:hidden' : 'lg:w-11/12'}`}>
 
-      <div onClick={changeTheCurrentTime} className='w-full cursor-pointer bg-[#b3b3b3] h-1 lg:h-1.5 rounded-xl mt-5'>
-        <div ref={barRef} style={{width: `${percentageProgress}%`}} className='bg-slate-100 h-1 lg:h-1.5  rounded-xl'></div>
+      <div onClick={changeTheCurrentTime} className={`w-full cursor-pointer bg-[#b3b3b3] h-1  ${size === 'small' ? 'mt-0' : 'mt-5 lg:h-1.5 rounded-xl '}`}>
+        <div ref={barRef} style={{width: `${percentageProgress}%`}} className={`bg-slate-100 h-1   ${size === 'small' ? '' : 'lg:h-1.5 rounded-xl'}`}></div>
       </div>
-      <div className='flex justify-between text-xs text-[#b3b3b3] font-bold'>
+      <div className={`flex justify-between text-xs text-[#b3b3b3] font-bold ${size === 'small' && 'hidden'}`}>
         <p>{progressInMinutes}</p>
         <p>-{reaminingTime}</p>
       </div>

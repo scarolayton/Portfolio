@@ -5,6 +5,7 @@ import Image from 'next/image'
 import songPic from '@/static/song-pic.jpg'
 import { useMyContext } from '@/context/songContext'
 import FullScreenPlayer from './fullScreenPlayer'
+import AudioBar from './audioBar'
 import {  BsMusicNoteBeamed, BsArrowsAngleExpand } from 'react-icons/bs'
 export default function SongPlayer() {
   const {isPlaying} = useMyContext()
@@ -17,12 +18,12 @@ export default function SongPlayer() {
         document.body
       )}
       {isPlaying ? (
-      
+
       <div className="flex self-center rounded-sm bg-[#4d4d4d] m-1 w-2/5 sm:w-5/6 xs:w-1/2  xs:bg-transparent">
         <div className="relative group rounded-full w-12 h-12">
           <button onClick={() => setFullScreenPlayerIsOpen(true)}   className='md:block h-full'>
 
-            <Image className="xs:rounded-lg  h-full" width={50} height={50} alt="song_pic-picture-from-josh-Sorrensons" src={songPic}/>
+            <Image className="xs:rounded-lg xs:w-28 xs:h-12  h-full" width={50} height={50} alt="song_pic-picture-from-josh-Sorrensons" src={songPic}/>
           </button>
           <div className="absolute md:hidden  inset-0 flex  items-center justify-center rounded-lg  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <button  onClick={() => setFullScreenPlayerIsOpen(!fullScreenPlayerIsOpen)}   className='w-full h-full'>
@@ -31,8 +32,12 @@ export default function SongPlayer() {
             </div>
         </div>
         <div className="flex justify-center w-full items-center xs:items-start flex-col text-[#b3b3b3] text-sm">
-          <h4 className="font-medium xs:text-slate-100 xs:ml-1.5">FreeDOM</h4>
+          <button onClick={() => setFullScreenPlayerIsOpen(true)}  className='md:block'>
+
+            <h4 className="font-medium xs:text-slate-100 xs:ml-1.5 w-20">FreeDOM</h4>
+          </button>
           <p className="xs:hidden">Sergio Caro - FreeDom</p>
+          <AudioBar size={'small'}/>
         </div>
       </div>
       ) : (

@@ -14,7 +14,7 @@ export default function VolumeController({size}) {
     setVolume(0)
   }
    return (
-    <div className={` text-sm  ${size === 'large' ? 'lg:w-full lg:text-base' : 'md:hidden'}`}>
+    <div className={` text-sm md:hidden  ${size === 'large' ? 'lg:w-full lg:text-base' : ''}`}>
       {volume > 0 ? (
         <>
           {volume >= 0.5 ? (

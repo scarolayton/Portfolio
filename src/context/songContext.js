@@ -5,38 +5,33 @@ import React, { createContext, useContext, useState, useRef } from 'react';
 const MyContext = createContext();
 
 export function IsPlayingContextProvider ({children}) {
-  const audioRef = useRef()
+  const audioRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(0.5)
   const [isScreenView, setIsScreenView] = useState(false)
   const [paused, setPaused] = useState(true)
-  const audio = typeof document !== 'undefined' ? document.getElementById('freeDOM') : null;
-  const playPauseTheSong = () => {
-    if(paused){
 
-      // audioRef.current.play()
-      audio.play()
-      }else {
- 
-      // audioRef.current.pause()
-      audio.pause()
+  const playPauseTheSong = () => {
+    if (!paused) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play(); // Si estaba pausado, reanuda la reproducción
     }
   }
   const handlePlayClick = () => {
-    if(isPlaying){
-      setPaused(!paused)
+    if (isPlaying) {
+      setPaused(!paused); // Cambia el estado de pausa
       playPauseTheSong()
-    }else {
-      // audioRef.current.play()
-      try {
-        audioRef.current.play();
-        console.log('hola');
-      } catch (error) {
-        console.error('Error al reproducir el audio:', error);
-      }
-      audioRef.current.volume = volume
-      setIsPlaying(true)
-      setPaused(false)
+      // Si se estaba reproduciendo, pausa el audio
+     
+    } else {
+      audioRef.current.play().finally(
+        function(){
+          setIsPlaying(true)
+          setPaused(false)
+        }
+      )
+      audioRef.current.play()
     }
   }
   const valueContext  = {
@@ -49,7 +44,7 @@ export function IsPlayingContextProvider ({children}) {
     paused, 
     setPaused, 
     handlePlayClick, 
-    playPauseTheSong, 
+    // playPauseTheSong, 
     audioRef
   }
   return(

@@ -49,7 +49,7 @@ export default function Proyects() {
       // ssr={true} // means to render carousel on server-side.
       keyBoardControl={true}
       renderButtonGroupOutside
-      transitionDuration={500}
+      transitionDuration={1000}
       removeArrowOnDeviceType={["phone", "tablet", "smallPhone"]}
       itemClass="carousel-item-padding-60-px"
      >        

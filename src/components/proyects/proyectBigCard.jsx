@@ -26,7 +26,7 @@ export default function ProyectBigCard({proyect, setIsTheFullCardOpen, isTheFull
   }
   return (
     <div  onClick={handleOnClick} className='fixed top-0  left-0 bg-black bg-opacity-50  h-screen w-screen flex justify-center items-center z-40'>
-      <div className='bg-[#1f1f1f] rounded-lg text-slate-100  p-6  w-150 sm:w-full mx-5'>
+      <div className='bg-[#1f1f1f] rounded-lg text-slate-100  p-6  w-150 sm:w-full sm:h-full sm:my-2'>
         <button id='btn-close-proyect' className='text-2xl ' onClick={handleOnClick}>
           <AiOutlineClose />
         </button>
